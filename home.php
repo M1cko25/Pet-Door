@@ -10,7 +10,7 @@ $logs = [];
 if (isset($_GET['date'])) {
     $date = $_GET['date'];
     $stmt = $conn->prepare("SELECT * FROM `logs` WHERE user_id = ? && date = ?");
-    $stmt->bind_param("ss", $_SESSION['user_id'], $date );
+    $stmt->bind_param("sss", $_SESSION['user_id'], $date );
     $stmt->execute();
     $result = $stmt->get_result();
     $logs = $result->fetch_all(MYSQLI_ASSOC);
